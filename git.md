@@ -6,7 +6,7 @@
 
 ---
 
-## v1.0.0 — 2026-06-19 | `<pending-commit-hash>`
+## v1.0.0 — 2026-06-20 00:00:00 UTC | `3285026`
 
 ### Added
 - Full project scaffold (src/, dashboard/, scripts/)
@@ -14,11 +14,12 @@
 - 26 automod module shells
 - 4 Mongoose model schemas (Guild, Case, User, MediaCase)
 - 7 handler shells, 2 middleware, 4 utils, 11 event listeners
-- 28 command stubs (moderation, config, security)
-- Dashboard Next.js scaffold: 12 page shells, 11 component stubs
+- 24 command stubs (moderation, config, security)
+- Dashboard Next.js scaffold: 14 page shells, 11 component stubs, 3 lib files, 2 hooks
 - Tracking files: todo.md, progress.md, completed.md, git.md
 - .env.example, .gitignore, package.json
-- Git repository initialized, pushed to GitHub (Zefr0x/AutoMod-Pro)
+- Git repository initialized, pushed to GitHub (whyonlythakur/AutoMod-Pro)
+- GitHub repository: https://github.com/whyonlythakur/AutoMod-Pro
 
 ### Removed
 - (nothing — initial release)
