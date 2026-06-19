@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits, Partials } = require('discord.js');
 const { loadCommands } = require('./commands');
 const { loadEvents } = require('./events');
+const Guild = require('./models/Guild');
 
 function createBot(redisClient) {
   const client = new Client({
@@ -15,6 +16,13 @@ function createBot(redisClient) {
   });
 
   client.redis = redisClient;
+  client.db = {
+    Guild,
+    Case: require('./models/Case'),
+    User: require('./models/User'),
+    MediaCase: require('./models/MediaCase'),
+  };
+  client.modules = {};
 
   loadCommands(client);
   loadEvents(client);

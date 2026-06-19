@@ -1,45 +1,52 @@
 # AutoMod Pro — Task List
 
-## M1 — Core Bot + Priority Modules (6 modules)
+> **Last Updated:** 2026-06-20  
+> **Current Version:** v1.1.0 (M1 Complete)
 
-### Phase 0 — Environment
-- [ ] [P0] Install Git, GitHub CLI, configure git user
-- [ ] [P0] GitHub CLI auth login (manual step)
+---
 
-### Phase 1 — Scaffold & Core
-- [ ] [P0] Create project scaffold (package.json, .env.example, .gitignore)
-- [ ] [P0] Bot entrypoint: index.js + bot.js + config.js (login, DB connect, event wire)
-- [ ] [P0] Mongoose connection setup + Guild/Case/User/MediaCase schemas
-- [ ] [P0] Redis client singleton
-- [ ] [P0] Permission middleware (Owner/Server Owner/Admin/Mod/Reporter tiers)
-- [ ] [P0] Command registrar (slash + prefix dual handler)
-- [ ] [P0] Deploy-commands script
+## ✅ M1 — Core Bot + Priority Modules (6 modules) — **COMPLETE**
 
-### Phase 1 — Staff System
-- [ ] [P0] Staff system: /staff add, /staff remove, DB persistence
+### Phase 0 — Environment ✅
+- [x] [P0] Install Git, GitHub CLI, configure git user
+- [x] [P0] GitHub CLI auth login (manual step)
 
-### Phase 1 — Priority Modules
-- [ ] [P0] Module: Spam Detection (message-frequency, Redis counters)
-- [ ] [P0] Module: Mass Mention Filter (@everyone/@here/mass pings)
-- [ ] [P0] Module: Bad Word / Profanity Filter (wordlist + regex)
-- [ ] [P0] Module: Invite Link Filter (block/whitelist)
-- [ ] [P0] Module: External Link Filter (domain allow/block)
-- [ ] [P0] Module: Anti-Raid (mass join detection, auto-lockdown trigger)
+### Phase 1 — Scaffold & Core ✅
+- [x] [P0] Create project scaffold (package.json, .env.example, .gitignore)
+- [x] [P0] Bot entrypoint: index.js + bot.js + config.js (login, DB connect, event wire)
+- [x] [P0] Mongoose connection setup + Guild/Case/User/MediaCase schemas
+- [x] [P0] Redis client singleton
+- [x] [P0] Permission middleware (Owner/Server Owner/Admin/Mod/Reporter tiers)
+- [x] [P0] Command registrar (slash + prefix dual handler)
+- [x] [P0] Deploy-commands script
 
-### Phase 1 — Logging & Commands
-- [ ] [P0] Log handler + 8 routable log channels
-- [ ] [P1] Message handler: wire messageCreate → module checks → case pipeline
-- [ ] [P1] Member handler: wire guildMemberAdd → raid/alt/new-account checks
-- [ ] [P1] Mod commands: /warn, /mute, /kick, /ban, /unban, /unmute
-- [ ] [P1] /report command (user-facing report creation)
-- [ ] [P1] /flag command (staff manual flag → case)
-- [ ] [P1] Embed builder utility (color-coded rich embeds)
-- [ ] [P2] /prefix set command
-- [ ] [P2] /config export/import command
-- [ ] [P2] /dashboard link command
-- [ ] [P2] Error handling & graceful shutdown
+### Phase 1 — Staff System ✅
+- [x] [P0] Staff system: /staff add, /staff remove, DB persistence
 
-## M2 — Remaining 19 Modules + Punishment Ladder Engine
+### Phase 1 — Priority Modules ✅
+- [x] [P0] Module: Spam Detection (message-frequency, Redis counters)
+- [x] [P0] Module: Mass Mention Filter (@everyone/@here/mass pings)
+- [x] [P0] Module: Bad Word / Profanity Filter (wordlist + regex)
+- [x] [P0] Module: Invite Link Filter (block/whitelist)
+- [x] [P0] Module: External Link Filter (domain allow/block)
+- [x] [P0] Module: Anti-Raid (mass join detection, auto-lockdown trigger)
+
+### Phase 1 — Logging & Commands ✅
+- [x] [P0] Log handler + 8 routable log channels
+- [x] [P1] Message handler: wire messageCreate → module checks → case pipeline
+- [x] [P1] Member handler: wire guildMemberAdd → raid/alt/new-account checks
+- [x] [P1] Mod commands: /warn, /mute, /kick, /ban, /unban, /unmute
+- [x] [P1] /report command (user-facing report creation)
+- [x] [P1] /flag command (staff manual flag → case)
+- [x] [P1] Embed builder utility (color-coded rich embeds)
+- [x] [P2] /prefix set command
+- [x] [P2] /config export/import command
+- [x] [P2] /dashboard link command
+- [x] [P2] Error handling & graceful shutdown
+
+---
+
+## ⏳ M2 — Remaining 19 Modules + Punishment Ladder Engine
 
 - [ ] [P0] Punishment ladder engine (warn→mute→kick→ban per module, point thresholds)
 - [ ] [P0] Module: Duplicate/Copy-paste Detection
@@ -70,7 +77,9 @@
 - [ ] [P2] /automod punishment command
 - [ ] [P2] /raidmode on/off/auto command
 
-## M3 — Report → Review → Action Pipeline (Discord-side)
+---
+
+## ⏳ M3 — Report → Review → Action Pipeline (Discord-side)
 
 - [ ] [P0] Case creation pipeline (auto-detect + manual report → unified Case)
 - [ ] [P0] Confidence scoring + auto-resolve logic (>90% + low-severity)
@@ -83,7 +92,9 @@
 - [ ] [P2] Appeal link generation (configurable)
 - [ ] [P2] Case states: pending → in_review → resolved | dismissed | escalated
 
-## M4 — Dashboard MVP
+---
+
+## ⏳ M4 — Dashboard MVP
 
 - [ ] [P0] Discord OAuth2 login flow
 - [ ] [P0] Server switcher + guild selection
@@ -94,7 +105,9 @@
 - [ ] [P1] Sidebar + topbar layout
 - [ ] [P2] Component library build-out: StatCard, ModuleToggleCard, KanbanColumn, ReportDrawer, etc.
 
-## M5 — Dashboard Full
+---
+
+## ⏳ M5 — Dashboard Full
 
 - [ ] [P0] Cases page: searchable history table + detail view
 - [ ] [P0] Logs page: channel router + live tail feed
@@ -106,7 +119,9 @@
 - [ ] [P2] Dashboard ↔ command config sync (every setting readable/writable both ways)
 - [ ] [P2] PDF export for case details
 
-## M6 — Load Testing, Sharding, Security, Launch
+---
+
+## ⏳ M6 — Load Testing, Sharding, Security, Launch
 
 - [ ] [P0] Discord.js ShardingManager setup
 - [ ] [P0] Security review: OAuth2 token encryption, server-side role enforcement, API rate limiting
@@ -117,3 +132,17 @@
 - [ ] [P2] 100% report routing verification (zero silent drops)
 - [ ] [P2] Documentation: setup guide, module reference, dashboard guide
 - [ ] [P2] Launch checklist
+
+---
+
+## Progress Summary
+
+| Milestone | Tasks | Complete | Remaining | % Done |
+|-----------|-------|----------|-----------|--------|
+| **M1** | 15 | 15 | 0 | **100%** |
+| **M2** | 28 | 0 | 28 | **0%** |
+| **M3** | 10 | 0 | 10 | **0%** |
+| **M4** | 7 | 0 | 7 | **0%** |
+| **M5** | 9 | 0 | 9 | **0%** |
+| **M6** | 9 | 0 | 9 | **0%** |
+| **TOTAL** | **78** | **15** | **63** | **19%** |

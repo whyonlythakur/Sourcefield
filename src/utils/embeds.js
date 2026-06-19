@@ -1,29 +1,47 @@
 const { EmbedBuilder } = require('discord.js');
 
 const COLORS = {
-  info: 0x5865F2,
-  warning: 0xF0B232,
-  danger: 0xED4245,
-  success: 0x23A55A,
-  raid: 0x9B59B6,
+  modActions: 0x23A55A,
+  automodTriggers: 0xF0B232,
+  messageLogs: 0x5865F2,
+  memberLogs: 0x5865F2,
+  raidLogs: 0x9B59B6,
+  caseLogs: 0xF0B232,
+  serverLogs: 0x5865F2,
+  errorLogs: 0xED4245,
+};
+
+const TITLES = {
+  modActions: 'Moderation Action',
+  automodTriggers: 'AutoMod Trigger',
+  messageLogs: 'Message Event',
+  memberLogs: 'Member Event',
+  raidLogs: 'Raid Alert',
+  caseLogs: 'Case Update',
+  serverLogs: 'Server Event',
+  errorLogs: 'Error',
 };
 
 function buildLogEmbed(category, data) {
-  const color = COLORS[data.color] || COLORS.info;
+  const color = data.color || COLORS[category] || 0x5865F2;
+  const title = data.title || TITLES[category] || category;
+
   const embed = new EmbedBuilder()
     .setColor(color)
-    .setTitle(data.title || category)
+    .setTitle(title)
     .setTimestamp();
 
   if (data.description) embed.setDescription(data.description);
   if (data.fields) embed.addFields(data.fields);
   if (data.footer) embed.setFooter({ text: data.footer });
+  if (data.thumbnail) embed.setThumbnail(data.thumbnail);
+  if (data.author) embed.setAuthor(data.author);
 
   return embed;
 }
 
 function buildCaseEmbed(caseDoc) {
-  const color = caseDoc.status === 'resolved' ? COLORS.success : COLORS.warning;
+  const color = caseDoc.status === 'resolved' ? COLORS.modActions : COLORS.automodTriggers;
   const embed = new EmbedBuilder()
     .setColor(color)
     .setTitle(`Case ${caseDoc.caseId}`)
@@ -44,4 +62,20 @@ function buildCaseEmbed(caseDoc) {
   return embed;
 }
 
-module.exports = { COLORS, buildLogEmbed, buildCaseEmbed };
+function buildModActionEmbed(action, moderator, target, reason) {
+  const embed = new EmbedBuilder()
+    .setColor(COLORS.modActions)
+    .setTitle(`${action.toUpperCase()} - ${target.username}`)
+    .addFields(
+      { name: 'Moderator', value: `<@${moderator.id}>`, inline: true },
+      { name: 'Target', value: `<@${target.id}> (${target.tag})`, inline: true },
+    )
+    .setFooter({ text: `User ID: ${target.id}` })
+    .setTimestamp();
+
+  if (reason) embed.addFields({ name: 'Reason', value: reason, inline: false });
+
+  return embed;
+}
+
+module.exports = { COLORS, TITLES, buildLogEmbed, buildCaseEmbed, buildModActionEmbed };
