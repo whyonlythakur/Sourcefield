@@ -1,0 +1,33 @@
+﻿{
+    "scripts":  {
+                    "dev":  "node --watch src/index.js",
+                    "register":  "node scripts/deploy-commands.js",
+                    "start":  "node src/index.js"
+                },
+    "description":  "AutoMod Pro - Fully-automatic Discord moderation bot with 26 modules, report pipeline, and web dashboard",
+    "license":  "MIT",
+    "version":  "1.0.0",
+    "engines":  {
+                    "node":  "\\u003e=20.0.0"
+                },
+    "name":  "automod-pro",
+    "main":  "src/index.js",
+    "devDependencies":  {
+
+                        },
+    "dependencies":  {
+                         "discord.js":  "^14.18.0",
+                         "socket.io":  "^4.8.0",
+                         "dotenv":  "^16.5.0",
+                         "bullmq":  "^5.51.0",
+                         "express":  "^4.21.0",
+                         "ioredis":  "^5.6.1",
+                         "mongoose":  "^8.14.0"
+                     },
+    "keywords":  [
+                     "discord",
+                     "moderation",
+                     "automod",
+                     "bot"
+                 ]
+}

@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+coverage/
+.DS_Store
+Thumbs.db
+dashboard/.next/
+dashboard/node_modules/
+dashboard/out/
+dashboard/.env
+dashboard/.env.local
+raft-'.$1999
+*.tgz
+.vscode/settings.json
+.idea/
