@@ -2,6 +2,7 @@ const { Client, GatewayIntentBits, Partials } = require('discord.js');
 const { loadCommands } = require('./commands');
 const { loadEvents } = require('./events');
 const Guild = require('./models/Guild');
+const modules = require('./modules');
 
 function createBot(redisClient) {
   const client = new Client({
@@ -22,7 +23,7 @@ function createBot(redisClient) {
     User: require('./models/User'),
     MediaCase: require('./models/MediaCase'),
   };
-  client.modules = {};
+  client.modules = modules;
 
   loadCommands(client);
   loadEvents(client);
