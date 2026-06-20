@@ -4,6 +4,60 @@
 
 ---
 
+## v3.0.0 — 2026-06-20 (M3 Complete)
+
+### Case Management Pipeline
+- [x] Enhanced reportHandler.js
+  - createCase() with auto-resolve logic
+  - createManualReport() for user reports
+  - createMediaCase() for media security workflow
+  - updateCaseStatus() for state transitions
+- [x] Auto-resolve for high-confidence (>90%) + low-severity cases
+- [x] Case states: pending → in_review → resolved | dismissed | escalated
+- [x] Media case support with security level tracking
+
+### Confidence Scoring System
+- [x] Enhanced confidence.js utilities
+  - calculateConfidence() for multi-rule scoring
+  - shouldAutoResolve() for instant case closure
+  - calculateSeverity() based on confidence + violation type
+  - getAutoActionThreshold() for per-module auto-punishment
+  - shouldAutoPunish() for smart auto-moderation
+- [x] Per-module auto-action thresholds (spam: 90, phishing: 95, token grabber: 98, etc.)
+
+### Review Queue System
+- [x] reviewHandler.js with full Discord integration
+  - createReviewEmbed() with case details, evidence, severity colors
+  - createReviewButtons() with 4 action buttons
+  - sendReviewMessage() to post to review channel
+  - handleReviewInteraction() for button clicks
+- [x] Button actions:
+  - ✅ Approve → opens punishment selection (Warn/Mute/Kick/Ban)
+  - ❌ Reject → dismisses case
+  - ⚠️ Escalate → sends to server owner
+  - Dismiss → closes without action
+- [x] Review embed shows: module, severity, confidence, target user, reporter, evidence, attachments
+
+### Case Commands
+- [x] /case view [id] - View specific case details with full embed
+- [x] /history @user - View user's moderation history (last 10 cases, warn points, total cases)
+
+### Event Handlers
+- [x] interactionCreate event - Handles button interactions for review queue
+- [x] Integration with punishment ladder on approval
+
+### Command Updates
+- [x] Updated /report command to use new createManualReport()
+- [x] Updated messageHandler to use auto-resolve logic
+- [x] Updated actionHandler to integrate with review queue
+
+### Logging
+- [x] Case creation logged to caseLogs channel
+- [x] Auto-resolved cases logged with reason
+- [x] Manual reports logged with reporter info
+
+---
+
 ## v2.0.0 — 2026-06-20 (M2 Complete)
 
 ### Punishment Engine
@@ -146,7 +200,7 @@
 
 ## Summary
 
-**Total Completed Tasks:** 60+  
-**Milestones Complete:** M1 (100%), M2 (100%)  
-**Overall Progress:** 51% (37/72 tasks)  
-**Next Milestone:** M3 (Report → Review → Action Pipeline)
+**Total Completed Tasks:** 75+  
+**Milestones Complete:** M1 (100%), M2 (100%), M3 (100%)  
+**Overall Progress:** 65% (47/72 tasks)  
+**Next Milestone:** M4 (Dashboard MVP)

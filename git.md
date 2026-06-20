@@ -6,6 +6,29 @@
 
 ---
 
+## v3.0.0 — 2026-06-20 20:00:00 UTC | `4730cde`
+
+### Added
+- M3 Complete: Report → Review → Action Pipeline
+- Enhanced reportHandler: createCase (with auto-resolve), createManualReport, createMediaCase, updateCaseStatus
+- Confidence scoring enhancements: per-module auto-action thresholds, severity calculation, shouldAutoPunish()
+- Review queue system with Discord button interactions (✅ Approve, ❌ Reject, ⚠️ Escalate, Dismiss)
+- Review embed builder with full case details, evidence, severity colors
+- Case management commands: /case view [id], /history @user
+- interactionCreate event handler for button interactions
+- Auto-logging to caseLogs channel for all case events
+- Case state machine: pending → in_review → resolved | dismissed | escalated
+
+### Removed
+- .env.example (replaced with .env for local development)
+
+### Changed
+- Updated report.js command to use createManualReport()
+- Updated messageHandler to use auto-resolve logic
+- Created .env with local Redis configuration (redis://localhost:6379)
+
+---
+
 ## v2.0.0 — 2026-06-20 18:00:00 UTC | `260eb25`
 
 ### Added

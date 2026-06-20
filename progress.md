@@ -1,13 +1,9 @@
 # AutoMod Pro — In Progress & Master Plan
 
 > **Last Updated:** 2026-06-20  
-> **Current Version:** v2.0.0  
-> **Current Sprint:** M3 — Report → Review → Action Pipeline  
-> **Overall Progress:** 51% (37/72 tasks)
-
----
-
-## PHASED EXECUTION PLAN
+> **Current Version:** v3.0.0  
+> **Current Sprint:** M4 — Dashboard MVP  
+> **Overall Progress:** 65% (47/72 tasks)
 
 ---
 
@@ -17,17 +13,16 @@
 **Completion Date:** 2026-06-20  
 **Version:** v1.1.0
 
-All 15 tasks completed. See completed.md for full details.
+All 15 tasks completed.
 
 ### M1 Deliverables ✅
 - ✅ Bot can login + connect to MongoDB/Redis
 - ✅ Staff management working (/staff add/remove)
-- ✅ 6 modules detecting violations (spam, massMention, profanity, inviteFilter, externalLinks, antiRaid)
-- ✅ Auto-created cases (from modules + manual reports/flags)
-- ✅ Log channel routing (8 categories with color-coded embeds)
-- ✅ Basic mod commands (/warn, /mute, /kick, /ban, /unban, /unmute)
+- ✅ 6 modules detecting violations
+- ✅ Auto-created cases
+- ✅ Log channel routing (8 categories)
+- ✅ 6 moderation commands
 - ✅ Report + Flag commands
-- ✅ User warn points tracking
 
 ---
 
@@ -37,177 +32,73 @@ All 15 tasks completed. See completed.md for full details.
 **Completion Date:** 2026-06-20  
 **Version:** v2.0.0
 
-### M2.1 ✅ Punishment Ladder Engine
-- **Files:** `src/handlers/actionHandler.js`, `src/modules/warnSystem.js`
-- **Implementation:** Point-based escalation (3 warns = mute, 5 = kick, 7 = ban)
-- **Status:** DONE
-
-### M2.2 ✅ Duplicate Message Detection
-- **Files:** `src/modules/duplicate.js`
-- **Implementation:** Redis-based, 5min window, 3 strikes
-- **Status:** DONE
-
-### M2.3 ✅ Mass Emoji/Sticker Spam
-- **Files:** `src/modules/massEmoji.js`
-- **Implementation:** >10 emojis/stickers, Unicode + custom emoji
-- **Status:** DONE
-
-### M2.4 ✅ Caps Lock Filter
-- **Files:** `src/modules/capsLock.js`
-- **Implementation:** >70% uppercase characters
-- **Status:** DONE
-
-### M2.5 ✅ Custom Blacklist
-- **Files:** `src/modules/customBlacklist.js`, `src/commands/config/wordfilter.js`
-- **Implementation:** Server-specific regex patterns, /wordfilter add/remove/list
-- **Status:** DONE
-
-### M2.6 ✅ Phishing/Scam Links
-- **Files:** `src/modules/phishingLinks.js`
-- **Implementation:** Known phishing domains, suspicious TLD detection
-- **Status:** DONE
-
-### M2.7 ✅ NSFW Image Detection
-- **Files:** `src/modules/nsfwImage.js`
-- **Implementation:** Keyword + filename analysis, non-NSFW channel only
-- **Status:** DONE
-
-### M2.8 ✅ Zalgo/Unicode Abuse
-- **Files:** `src/modules/zalgoFilter.js`
-- **Implementation:** Combining mark detection, >30% ratio
-- **Status:** DONE
-
-### M2.9 ✅ New Account Filter
-- **Files:** `src/modules/newAccount.js`
-- **Implementation:** Account age < threshold days, auto-kick option
-- **Status:** DONE
-
-### M2.10 ✅ Alt Account Detection
-- **Files:** `src/modules/altDetection.js`
-- **Implementation:** Account age + join age + heuristics
-- **Status:** DONE
-
-### M2.11 ✅ Webhook Spam Protection
-- **Files:** `src/modules/webhookSpam.js`
-- **Implementation:** Unauthorized webhook rate limiting
-- **Status:** DONE
-
-### M2.12 ✅ Nickname Filter
-- **Files:** `src/modules/nicknameFilter.js`
-- **Implementation:** Offensive + impersonation detection
-- **Status:** DONE
-
-### M2.13 ✅ Channel/Role Spam
-- **Files:** `src/modules/channelRoleSpam.js`
-- **Implementation:** Mass creation rate tracking
-- **Status:** DONE
-
-### M2.14 ✅ Auto-Slowmode
-- **Files:** `src/modules/autoSlowmode.js`
-- **Implementation:** Dynamic slowmode on high message velocity
-- **Status:** DONE
-
-### M2.15 ✅ Token/IP Grabber Detection
-- **Files:** `src/modules/tokenIpGrabber.js`
-- **Implementation:** Grabber keywords + URL shorteners
-- **Status:** DONE
-
-### M2.16 ✅ Selfbot Detection
-- **Files:** `src/modules/selfbotDetection.js`
-- **Implementation:** Rapid message patterns, <1s intervals
-- **Status:** DONE
-
-### M2.17 ✅ Mute/Timeout Manager
-- **Files:** `src/modules/muteManager.js`
-- **Implementation:** Tracks active mutes, remaining time
-- **Status:** DONE
-
-### M2.18 ✅ Lockdown Mode
-- **Files:** `src/modules/lockdown.js`, `src/commands/moderation/lockdown.js`
-- **Implementation:** Server-wide channel lock with enable/disable functions
-- **Status:** DONE
-
-### M2.19 ✅ Verification Gate
-- **Files:** `src/modules/verificationGate.js`
-- **Implementation:** Unverified user detection, gate role check
-- **Status:** DONE
-
-### M2.20 ✅ Media Security System (Module 26)
-- **Files:** `src/modules/mediaSecurity.js`
-- **Implementation:** Security levels (Low/Moderate/High), media channel, trusted role, auto-intercept
-- **Status:** DONE
-
-### M2.21 ✅ Security Commands
-- **Files:** `src/commands/security/index.js`
-- **Implementation:** level, mediachannel, reviewchannel, trustedrole, autoescalate, status
-- **Status:** DONE
-
-### M2.22 ✅ Config Commands
-- **Files:** `src/commands/config/automod.js`, `raidmode.js`
-- **Implementation:** /automod module/threshold/punishment, /raidmode on/off/auto
-- **Status:** DONE
-
----
-
-### M2 Deliverables ✅
-- ✅ All 26 modules functional
+All 22 tasks completed including:
 - ✅ Punishment ladder engine with auto-escalation
-- ✅ Media Security System (full §5A workflow foundation)
-- ✅ Full config command set
-- ✅ Security command set
+- ✅ 17 new modules (duplicate, massEmoji, capsLock, customBlacklist, phishing, nsfw, zalgo, newAccount, altDetection, webhookSpam, nicknameFilter, channelRoleSpam, autoSlowmode, tokenIpGrabber, selfbot, lockdown, verificationGate, mediaSecurity)
+- ✅ Security commands (/security level, mediachannel, reviewchannel, trustedrole, autoescalate, status)
+- ✅ Config commands (/automod, /wordfilter, /raidmode)
 
 ---
 
-## M3 — Report → Review → Action Pipeline ⏳ **NEXT**
+## M3 — Report → Review → Action Pipeline ✅ **COMPLETE**
 
-**Status:** 0% ⏳  
-**Estimated:** 6-8 hours  
-**Dependencies:** M2.1 (Punishment ladder) ✅
+**Status:** 100% ✅  
+**Completion Date:** 2026-06-20  
+**Version:** v3.0.0
 
-### M3.1 ⏳ Case Creation Pipeline
+### M3.1 ✅ Case Creation Pipeline
 - **Files:** `src/handlers/reportHandler.js`
-- **Implementation:** Auto-detect + manual report → unified Case
-- **Effort:** 1.5 hours
+- **Implementation:** Auto-detect + manual report → unified Case, auto-resolve logic, media case support
+- **Status:** DONE
 
-### M3.2 ⏳ Confidence Scoring
-- **Files:** `src/utils/confidence.js`, `src/handlers/reportHandler.js`
+### M3.2 ✅ Confidence Scoring
+- **Files:** `src/utils/confidence.js`
 - **Auto-resolve logic:** >90% + low-severity = instant action
-- **Effort:** 1 hour
+- **Per-module thresholds:** spam (90), phishing (95), token grabber (98), etc.
+- **Status:** DONE
 
-### M3.3 ⏳ Review Queue Embeds
+### M3.3 ✅ Review Queue Embeds
 - **Files:** `src/handlers/reviewHandler.js`
-- **Discord-side:** Embeds with ✅/❌ buttons
-- **Effort:** 2 hours
+- **Discord-side:** Embeds with ✅/❌/⚠️ buttons, punishment selection
+- **Status:** DONE
 
-### M3.4 ⏳ Action Handler (Enhanced)
-- **Files:** `src/handlers/actionHandler.js` (already implemented in M2)
-- **Enhancement:** Media review workflow integration
-- **Effort:** 1.5 hours
+### M3.4 ✅ Action Handler (Enhanced)
+- **Files:** `src/handlers/actionHandler.js` (from M2)
+- **Enhancement:** Integrated with review queue, media review workflow foundation
+- **Status:** DONE
 
-### M3.5 ⏳ Case/History Commands
+### M3.5 ✅ Case/History Commands
 - **Files:** `src/commands/moderation/case.js`, `history.js`
-- **Implementation:** /case view, /history @user
-- **Effort:** 1 hour
+- **Implementation:** /case view [id], /history @user
+- **Status:** DONE
+
+### Additional M3 Features
+- [x] interactionCreate event handler for button interactions
+- [x] Case state machine: pending → in_review → resolved | dismissed | escalated
+- [x] Auto-logging to caseLogs channel
+- [x] Staff ping on manual reports
 
 ---
 
-### M3 Deliverables
-- Unified case pipeline
-- Review queue with button interactions
-- Auto-action for high-confidence cases
-- Full audit trail
+### M3 Deliverables ✅
+- ✅ Unified case pipeline (auto + manual)
+- ✅ Review queue with button interactions (Approve/Reject/Escalate/Dismiss)
+- ✅ Auto-action for high-confidence cases
+- ✅ Case view and history commands
+- ✅ Full audit trail
+- ✅ Media case support for Media Security System
 
 ---
 
-## M4 — Dashboard MVP ⏳
+## M4 — Dashboard MVP ⏳ **NEXT**
 
 **Status:** 0% ⏳  
 **Estimated:** 15-20 hours  
-**Dependencies:** M3 (case pipeline for Reports page data)
+**Dependencies:** M3 (case pipeline) ✅
 
 ### M4.1 ⏳ Backend API Setup
 - **Files:** `dashboard/src/app/api/` routes
-- **Implementation:** Express/Next.js API routes, Discord OAuth2 (NextAuth)
+- **Implementation:** Next.js API routes, Discord OAuth2 (NextAuth)
 - **Effort:** 4 hours
 
 ### M4.2 ⏳ Login + Server Switcher
@@ -333,7 +224,7 @@ M1 (Core + 6 modules) ✅
   ↓
 M2 (19 modules + ladder engine) ✅
   ↓
-M3 (Report pipeline) ⏳
+M3 (Report pipeline) ✅
   ↓
 M4 (Dashboard MVP) ⏳
   ↓
@@ -343,10 +234,9 @@ M6 (Sharding + Security + Launch) ⏳
 ```
 
 ### Key Dependencies
-- ✅ **M2.1 (Punishment ladder)** COMPLETE — M3 can now execute auto-punishments
-- ⏳ **M3 (case pipeline)** required before M4 (Reports page needs case data)
+- ✅ **M3 (case pipeline)** COMPLETE — M4 Reports page can now use case data
 - ⏳ **M4 (API + WebSocket)** required before M5 (dashboard pages build on foundation)
-- ✅ **M2.20 (Media Security)** COMPLETE — M3 media review workflow can integrate
+- ✅ **M2.20 (Media Security)** COMPLETE — M5 Media Security page has backend support
 
 ---
 
@@ -356,11 +246,11 @@ M6 (Sharding + Security + Launch) ⏳
 |-----------|-------|----------|-----------|--------|--------|
 | **M1** | 15 | 15 | 0 | **100%** | ✅ Complete |
 | **M2** | 22 | 22 | 0 | **100%** | ✅ Complete |
-| **M3** | 10 | 0 | 10 | **0%** | ⏳ Next |
-| **M4** | 7 | 0 | 7 | **0%** | ⏳ Pending |
+| **M3** | 10 | 10 | 0 | **100%** | ✅ Complete |
+| **M4** | 7 | 0 | 7 | **0%** | ⏳ Next |
 | **M5** | 9 | 0 | 9 | **0%** | ⏳ Pending |
 | **M6** | 9 | 0 | 9 | **0%** | ⏳ Pending |
-| **TOTAL** | **72** | **37** | **35** | **51%** | **In Progress** |
+| **TOTAL** | **72** | **47** | **25** | **65%** | **In Progress** |
 
 ---
 
@@ -370,11 +260,11 @@ M6 (Sharding + Security + Launch) ⏳
 |-----------|-----------|--------|----------|
 | M1 | 8-10 hours | ~12 hours | +2 hours |
 | M2 | 12-15 hours | ~8 hours | -4 hours |
-| M3 | 6-8 hours | - | - |
+| M3 | 6-8 hours | ~4 hours | -2 hours |
 | M4 | 15-20 hours | - | - |
 | M5 | 12-15 hours | - | - |
 | M6 | 8-10 hours | - | - |
-| **TOTAL** | **61-78 hours** | **~20 hours** | **-** |
+| **TOTAL** | **61-78 hours** | **~24 hours** | **-** |
 
 ---
 
@@ -384,9 +274,9 @@ M6 (Sharding + Security + Launch) ⏳
 - None
 
 ### Upcoming Considerations
-- **M3.3 (Review Queue):** Need to implement Discord button interactions (requires discord.js v14 ButtonBuilder)
-- **M3.5 (Media Review Workflow):** Complex workflow — may need dedicated focus
 - **M4 (Dashboard):** Requires Discord OAuth2 app setup in Discord Developer Portal
+- **M4.6 (WebSocket):** Need to decide between Socket.IO server or Next.js API routes with polling
+- **M5.4 (Media Security Page):** Dashboard review queue must sync with Discord review queue via WebSocket
 
 ---
 
@@ -397,11 +287,11 @@ M6 (Sharding + Security + Launch) ⏳
 | v1.0.0 | 2026-06-19 | Initial Scaffold | ✅ Complete |
 | v1.1.0 | 2026-06-20 | M1 Complete | ✅ Complete |
 | v2.0.0 | 2026-06-20 | M2 Complete | ✅ Complete |
-| **v3.0.0** | **TBD** | **M3 Complete** | ⏳ In Progress |
-| v4.0.0 | TBD | M4 Complete | ⏳ Pending |
+| v3.0.0 | 2026-06-20 | M3 Complete | ✅ Complete |
+| **v4.0.0** | **TBD** | **M4 Complete** | ⏳ In Progress |
 | v5.0.0 | TBD | M5 Complete | ⏳ Pending |
 | v6.0.0 | TBD | M6 Complete | ⏳ Pending |
 
 ---
 
-**Next Action:** Begin M3 implementation starting with M3.1 (Case Creation Pipeline enhancement)
+**Next Action:** Begin M4 implementation starting with M4.1 (Backend API Setup + Discord OAuth2)
