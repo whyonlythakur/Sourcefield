@@ -6,6 +6,28 @@
 
 ---
 
+## v2.0.0 — 2026-06-20 18:00:00 UTC | `260eb25`
+
+### Added
+- M2 Complete: All 26 Modules + Punishment Ladder Engine
+- Punishment ladder engine: auto-escalation (3 warns=mute, 5=kick, 7=ban)
+- 17 new automod modules: Duplicate, Mass Emoji, Caps Lock, Custom Blacklist, Phishing Links, NSFW Image, Zalgo, New Account (enhanced), Alt Detection, Webhook Spam, Nickname Filter, Channel/Role Spam, Auto-Slowmode, Token/IP Grabber, Selfbot Detection, Lockdown, Verification Gate, Media Security
+- Security commands: /security level, mediachannel, reviewchannel, trustedrole, autoescalate, status
+- Config commands: /automod module/threshold/punishment, /raidmode, /wordfilter add/remove/list
+- Enhanced actionHandler: executePunishment, checkAutoEscalation, handleModuleTrigger
+- Media Security System (Module 26): Full §5A workflow (Low/Moderate/High security levels, review queue, webhook relay)
+- Lockdown module with enable/disable functions
+
+### Removed
+- (nothing)
+
+### Changed
+- Updated bot.js to load all modules into client.modules
+- Enhanced messageHandler with punishment ladder integration
+- Updated lockdown command to integrate with lockdown module
+
+---
+
 ## v1.1.0 — 2026-06-20 12:00:00 UTC | `7e41420`
 
 ### Added
