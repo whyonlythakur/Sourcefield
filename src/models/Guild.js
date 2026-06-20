@@ -1,74 +1,110 @@
-const { Schema, model } = require('mongoose');
+const { getSupabase } = require('../utils/supabase');
 
-const moduleSchema = new Schema({
-  enabled: { type: Boolean, default: false },
-  threshold: { type: Number, default: 5 },
-  ladder: { type: [String], default: ['warn', 'mute', 'kick', 'ban'] },
-}, { _id: false });
+class GuildModel {
+  static async findOne(query) {
+    const supabase = getSupabase();
+    
+    if (query.guildId) {
+      const { data, error } = await supabase
+        .from('guilds')
+        .select('*')
+        .eq('guild_id', query.guildId)
+        .single();
+      
+      if (error || !data) return null;
+      return this.formatFromSupabase(data);
+    }
+    
+    return null;
+  }
 
-const staffSchema = new Schema({
-  userId: { type: String, required: true },
-  role: { type: String, enum: ['admin', 'moderator', 'reporter'], default: 'moderator' },
-}, { _id: false });
+  static async create(data) {
+    const supabase = getSupabase();
+    const formatted = this.formatToSupabase(data);
+    
+    const { data: inserted, error } = await supabase
+      .from('guilds')
+      .insert([formatted])
+      .select()
+      .single();
+    
+    if (error) throw error;
+    return this.formatFromSupabase(inserted);
+  }
 
-const securitySchema = new Schema({
-  level: { type: String, enum: ['low', 'moderate', 'high'], default: 'low' },
-  autoEscalateOnRaid: { type: Boolean, default: false },
-  mediaChannelId: { type: String, default: null },
-  reviewChannelId: { type: String, default: null },
-  trustedRoleId: { type: String, default: null },
-  webhookId: { type: String, default: null },
-}, { _id: false });
+  static async findOneAndUpdate(query, update, options = {}) {
+    const supabase = getSupabase();
+    
+    if (query.guildId) {
+      const { data: existing } = await supabase
+        .from('guilds')
+        .select('*')
+        .eq('guild_id', query.guildId)
+        .single();
+      
+      if (existing) {
+        const formattedUpdate = this.formatToSupabase(update);
+        const { data: updated, error } = await supabase
+          .from('guilds')
+          .update(formattedUpdate)
+          .eq('guild_id', query.guildId)
+          .select()
+          .single();
+        
+        if (error) throw error;
+        return this.formatFromSupabase(updated);
+      } else if (options.upsert) {
+        const newData = { guild_id: query.guildId, ...update };
+        return await this.create(newData);
+      }
+    }
+    
+    return null;
+  }
 
-const guildSchema = new Schema({
-  guildId: { type: String, required: true, unique: true },
-  prefix: { type: String, default: '!' },
-  ownerOverrides: { type: [String], default: [] },
-  staff: { type: [staffSchema], default: [] },
-  modules: {
-    spam: { type: moduleSchema, default: () => ({ enabled: true, threshold: 5 }) },
-    duplicate: { type: moduleSchema, default: () => ({}) },
-    massMention: { type: moduleSchema, default: () => ({ enabled: true, threshold: 5 }) },
-    massEmoji: { type: moduleSchema, default: () => ({}) },
-    capsLock: { type: moduleSchema, default: () => ({}) },
-    profanity: { type: moduleSchema, default: () => ({ enabled: true, threshold: 3 }) },
-    customBlacklist: { type: moduleSchema, default: () => ({}) },
-    inviteFilter: { type: moduleSchema, default: () => ({ enabled: true }) },
-    externalLinks: { type: moduleSchema, default: () => ({ enabled: true }) },
-    phishingLinks: { type: moduleSchema, default: () => ({}) },
-    nsfwImage: { type: moduleSchema, default: () => ({}) },
-    zalgoFilter: { type: moduleSchema, default: () => ({}) },
-    antiRaid: { type: moduleSchema, default: () => ({ enabled: true, threshold: 5 }) },
-    newAccount: { type: moduleSchema, default: () => ({}) },
-    altDetection: { type: moduleSchema, default: () => ({}) },
-    webhookSpam: { type: moduleSchema, default: () => ({}) },
-    nicknameFilter: { type: moduleSchema, default: () => ({}) },
-    channelRoleSpam: { type: moduleSchema, default: () => ({}) },
-    autoSlowmode: { type: moduleSchema, default: () => ({}) },
-    tokenIpGrabber: { type: moduleSchema, default: () => ({}) },
-    selfbotDetection: { type: moduleSchema, default: () => ({}) },
-    warnSystem: { type: moduleSchema, default: () => ({ enabled: true }) },
-    muteManager: { type: moduleSchema, default: () => ({ enabled: true }) },
-    lockdown: { type: moduleSchema, default: () => ({}) },
-    verificationGate: { type: moduleSchema, default: () => ({}) },
-    mediaSecurity: { type: moduleSchema, default: () => ({}) },
-  },
-  logChannels: {
-    modActions: { type: String, default: null },
-    automodTriggers: { type: String, default: null },
-    messageLogs: { type: String, default: null },
-    memberLogs: { type: String, default: null },
-    raidLogs: { type: String, default: null },
-    caseLogs: { type: String, default: null },
-    serverLogs: { type: String, default: null },
-    errorLogs: { type: String, default: null },
-  },
-  verification: {
-    enabled: { type: Boolean, default: false },
-    type: { type: String, enum: ['captcha', 'reaction'], default: 'reaction' },
-    gateRoleId: { type: String, default: null },
-  },
-  security: { type: securitySchema, default: () => ({}) },
-}, { timestamps: true });
+  static async deleteOne(query) {
+    const supabase = getSupabase();
+    
+    if (query.guildId) {
+      const { error } = await supabase
+        .from('guilds')
+        .delete()
+        .eq('guild_id', query.guildId);
+      
+      return !error;
+    }
+    
+    return false;
+  }
 
-module.exports = model('Guild', guildSchema);
+  static formatFromSupabase(data) {
+    return {
+      _id: data.id,
+      guildId: data.guild_id,
+      prefix: data.prefix || '!',
+      ownerOverrides: data.owner_overrides || [],
+      staff: data.staff || [],
+      modules: data.modules || {},
+      logChannels: data.log_channels || {},
+      verification: data.verification || {},
+      security: data.security || {},
+      createdAt: data.created_at,
+      updatedAt: data.updated_at,
+    };
+  }
+
+  static formatToSupabase(data) {
+    return {
+      guild_id: data.guildId || data.guild_id,
+      prefix: data.prefix,
+      owner_overrides: data.ownerOverrides,
+      staff: data.staff,
+      modules: data.modules,
+      log_channels: data.logChannels,
+      verification: data.verification,
+      security: data.security,
+    };
+  }
+}
+
+module.exports = GuildModel;

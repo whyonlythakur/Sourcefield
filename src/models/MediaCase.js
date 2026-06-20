@@ -1,21 +1,64 @@
-const { Schema, model } = require('mongoose');
+const { getSupabase } = require('../utils/supabase');
+const { generateCaseId } = require('../utils/caseId');
 
-const attachmentSchema = new Schema({
-  url: { type: String, required: true },
-  type: { type: String, enum: ['image', 'video', 'gif'], required: true },
-  hash: { type: String, default: null },
-}, { _id: false });
+class MediaCaseModel {
+  static async create(data) {
+    const supabase = getSupabase();
+    const mediaData = {
+      case_id: generateCaseId(),
+      guild_id: data.guildId,
+      uploader_id: data.uploaderId,
+      attachments: data.attachments || [],
+      security_level_at_upload: data.securityLevelAtUpload,
+      status: data.status || 'pending',
+      reviewer_id: null,
+      rejection_reason: null,
+      relayed_message_id: null,
+    };
 
-const mediaCaseSchema = new Schema({
-  caseId: { type: String, required: true, unique: true },
-  guildId: { type: String, required: true, index: true },
-  uploaderId: { type: String, required: true },
-  attachments: { type: [attachmentSchema], default: [] },
-  securityLevelAtUpload: { type: String, enum: ['low', 'moderate', 'high'], required: true },
-  status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending', index: true },
-  reviewerId: { type: String, default: null },
-  rejectionReason: { type: String, default: null },
-  relayedMessageId: { type: String, default: null },
-}, { timestamps: true });
+    const { data: inserted, error } = await supabase
+      .from('media_cases')
+      .insert([mediaData])
+      .select()
+      .single();
+    
+    if (error) throw error;
+    return this.formatFromSupabase(inserted);
+  }
 
-module.exports = model('MediaCase', mediaCaseSchema);
+  static async findOne(query) {
+    const supabase = getSupabase();
+    
+    if (query.caseId) {
+      const { data, error } = await supabase
+        .from('media_cases')
+        .select('*')
+        .eq('case_id', query.caseId)
+        .single();
+      
+      if (error || !data) return null;
+      return this.formatFromSupabase(data);
+    }
+    
+    return null;
+  }
+
+  static formatFromSupabase(data) {
+    return {
+      _id: data.id,
+      caseId: data.case_id,
+      guildId: data.guild_id,
+      uploaderId: data.uploader_id,
+      attachments: data.attachments || [],
+      securityLevelAtUpload: data.security_level_at_upload,
+      status: data.status,
+      reviewerId: data.reviewer_id,
+      rejectionReason: data.rejection_reason,
+      relayedMessageId: data.relayed_message_id,
+      createdAt: data.created_at,
+      updatedAt: data.updated_at,
+    };
+  }
+}
+
+module.exports = MediaCaseModel;
