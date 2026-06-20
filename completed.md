@@ -4,6 +4,28 @@
 
 ---
 
+## v4.0.0 — 2026-06-20 (M4 Complete)
+
+### Dashboard MVP
+- [x] NextAuth v4 + Discord OAuth2 setup (`dashboard/src/app/api/auth/[...nextauth]/route.ts`)
+- [x] Login page (`/login`) with Discord sign-in
+- [x] Server switcher (`/select-server`) — fetches Discord guilds, filters manageable, shows bot presence
+- [x] Overview page (`/[guildId]/overview`) — stat cards, 7-day action chart, case breakdown chart, live log feed
+- [x] AutoMod config page (`/[guildId]/automod`) — 26 module toggle cards with PATCH API
+- [x] Reports Kanban (`/[guildId]/reports`) — Pending | In Review | Resolved columns with status buttons
+- [x] Supabase Realtime integration (`LiveLogFeed` component) — live activity feed without separate Socket.io server
+
+### API Routes
+- [x] `GET /api/guilds` — Fetch manageable guilds with bot presence
+- [x] `GET /api/guilds/[guildId]` — Guild data
+- [x] `GET /api/guilds/[guildId]/overview` — Stats, weekly actions, case breakdown
+- [x] `GET /api/guilds/[guildId]/modules` — Module configuration
+- [x] `PATCH /api/guilds/[guildId]/modules/[moduleName]` — Toggle/update module
+- [x] `GET /api/guilds/[guildId]/reports` + `PATCH` — Reports CRUD
+- [x] `GET /api/guilds/[guildId]/cases` — Case history with pagination
+
+---
+
 ## v3.0.0 — 2026-06-20 (M3 Complete)
 
 ### Case Management Pipeline
@@ -200,7 +222,7 @@
 
 ## Summary
 
-**Total Completed Tasks:** 75+  
-**Milestones Complete:** M1 (100%), M2 (100%), M3 (100%)  
-**Overall Progress:** 65% (47/72 tasks)  
-**Next Milestone:** M4 (Dashboard MVP)
+**Total Completed Tasks:** 90+
+**Milestones Complete:** M1 (100%), M2 (100%), M3 (100%), M4 (100%)
+**Overall Progress:** 75% (54/72 tasks)
+**Next Milestone:** M5 (Dashboard Full)

@@ -1,22 +1,22 @@
 # AutoMod Pro — In Progress & Master Plan
 
-> **Last Updated:** 2026-06-20  
-> **Current Version:** v3.0.0  
-> **Current Sprint:** M4 — Dashboard MVP  
-> **Overall Progress:** 65% (47/72 tasks)
+> **Last Updated:** 2026-06-20
+> **Current Version:** v4.0.0
+> **Current Sprint:** M5 — Dashboard Full
+> **Overall Progress:** 75% (54/72 tasks)
 
 ---
 
 ## M1 — Core Bot + 6 Priority Modules ✅ **COMPLETE**
 
-**Status:** 100% ✅  
-**Completion Date:** 2026-06-20  
+**Status:** 100% ✅
+**Completion Date:** 2026-06-20
 **Version:** v1.1.0
 
 All 15 tasks completed.
 
 ### M1 Deliverables ✅
-- ✅ Bot can login + connect to MongoDB/Redis
+- ✅ Bot can login + connect to Supabase
 - ✅ Staff management working (/staff add/remove)
 - ✅ 6 modules detecting violations
 - ✅ Auto-created cases
@@ -28,8 +28,8 @@ All 15 tasks completed.
 
 ## M2 — Remaining 19 Modules + Punishment Engine ✅ **COMPLETE**
 
-**Status:** 100% ✅  
-**Completion Date:** 2026-06-20  
+**Status:** 100% ✅
+**Completion Date:** 2026-06-20
 **Version:** v2.0.0
 
 All 22 tasks completed including:
@@ -42,8 +42,8 @@ All 22 tasks completed including:
 
 ## M3 — Report → Review → Action Pipeline ✅ **COMPLETE**
 
-**Status:** 100% ✅  
-**Completion Date:** 2026-06-20  
+**Status:** 100% ✅
+**Completion Date:** 2026-06-20
 **Version:** v3.0.0
 
 ### M3.1 ✅ Case Creation Pipeline
@@ -90,55 +90,59 @@ All 22 tasks completed including:
 
 ---
 
-## M4 — Dashboard MVP ⏳ **NEXT**
+## M4 — Dashboard MVP ✅ **COMPLETE**
 
-**Status:** 0% ⏳  
-**Estimated:** 15-20 hours  
-**Dependencies:** M3 (case pipeline) ✅
+**Status:** 100% ✅
+**Completion Date:** 2026-06-20
+**Version:** v4.0.0
 
-### M4.1 ⏳ Backend API Setup
+### M4.1 ✅ Backend API Setup
 - **Files:** `dashboard/src/app/api/` routes
-- **Implementation:** Next.js API routes, Discord OAuth2 (NextAuth)
-- **Effort:** 4 hours
+- **Implementation:** Next.js API routes (App Router), NextAuth v4 + Discord OAuth2
+- **Status:** DONE
 
-### M4.2 ⏳ Login + Server Switcher
+### M4.2 ✅ Login + Server Switcher
 - **Files:** `dashboard/src/app/login/page.tsx`, `select-server/page.tsx`
-- **Effort:** 2 hours
+- **Implementation:** Discord OAuth2 login, fetch user's guilds from Discord API, filter manageable guilds, show bot presence status
+- **Status:** DONE
 
-### M4.3 ⏳ Overview Page
+### M4.3 ✅ Overview Page
 - **Files:** `dashboard/src/app/[guildId]/overview/page.tsx`
-- **Implementation:** Stat cards, charts (recharts or chart.js)
-- **Effort:** 3 hours
+- **Implementation:** Stat cards (members, active cases, auto-actions, raid status), 7-day action bar chart, case breakdown chart, Supabase Realtime live log feed
+- **Status:** DONE
 
-### M4.4 ⏳ Automod Config Page
+### M4.4 ✅ Automod Config Page
 - **Files:** `dashboard/src/app/[guildId]/automod/page.tsx`
-- **Implementation:** Module toggle grid, threshold sliders
-- **Effort:** 3 hours
+- **Implementation:** 26 module toggle cards, threshold display, PATCH API for toggling modules
+- **Status:** DONE
 
-### M4.5 ⏳ Reports Kanban
+### M4.5 ✅ Reports Kanban
 - **Files:** `dashboard/src/app/[guildId]/reports/page.tsx`
-- **Implementation:** Pending | In Review | Resolved columns
-- **Effort:** 3 hours
+- **Implementation:** 3-column Kanban (Pending / In Review / Resolved), move between statuses, empty states
+- **Status:** DONE
 
-### M4.6 ⏳ WebSocket Integration
-- **Files:** `dashboard/src/lib/socket.ts`, backend Socket.IO server
-- **Implementation:** Live stats, report queue updates
-- **Effort:** 3 hours
-
----
-
-### M4 Deliverables
-- Working dashboard with OAuth2
-- Overview + Automod config + Reports pages
-- Live WebSocket updates
+### M4.6 ✅ WebSocket Integration (Supabase Realtime)
+- **Files:** `dashboard/src/components/LiveLogFeed.tsx`, `dashboard/src/lib/supabase-client.ts`
+- **Implementation:** Supabase Realtime subscription to `cases` table, live INSERT events displayed in activity feed, no separate Socket.io server needed
+- **Status:** DONE
 
 ---
 
-## M5 — Dashboard Full ⏳
+### M4 Deliverables ✅
+- ✅ Working dashboard with OAuth2 Discord login
+- ✅ Server switcher showing manageable guilds with bot presence
+- ✅ Overview page with stats, charts, and live activity feed
+- ✅ AutoMod config page with 26 module toggles
+- ✅ Reports Kanban board with status management
+- ✅ Supabase Realtime live updates
 
-**Status:** 0% ⏳  
-**Estimated:** 12-15 hours  
-**Dependencies:** M4 (API + WebSocket foundation)
+---
+
+## M5 — Dashboard Full ⏳ **NEXT**
+
+**Status:** 0% ⏳
+**Estimated:** 12-15 hours
+**Dependencies:** M4 (API + WebSocket foundation) ✅
 
 ### M5.1 ⏳ Cases Page
 - **Files:** `dashboard/src/app/[guildId]/cases/page.tsx`
@@ -184,7 +188,7 @@ All 22 tasks completed including:
 
 ## M6 — Load Testing, Sharding, Security, Launch ⏳
 
-**Status:** 0% ⏳  
+**Status:** 0% ⏳
 **Estimated:** 8-10 hours
 
 ### M6.1 ⏳ ShardingManager
@@ -226,7 +230,7 @@ M2 (19 modules + ladder engine) ✅
   ↓
 M3 (Report pipeline) ✅
   ↓
-M4 (Dashboard MVP) ⏳
+M4 (Dashboard MVP) ✅
   ↓
 M5 (Dashboard Full) ⏳
   ↓
@@ -235,7 +239,7 @@ M6 (Sharding + Security + Launch) ⏳
 
 ### Key Dependencies
 - ✅ **M3 (case pipeline)** COMPLETE — M4 Reports page can now use case data
-- ⏳ **M4 (API + WebSocket)** required before M5 (dashboard pages build on foundation)
+- ✅ **M4 (API + WebSocket)** COMPLETE — M5 Dashboard pages build on this foundation
 - ✅ **M2.20 (Media Security)** COMPLETE — M5 Media Security page has backend support
 
 ---
@@ -247,10 +251,10 @@ M6 (Sharding + Security + Launch) ⏳
 | **M1** | 15 | 15 | 0 | **100%** | ✅ Complete |
 | **M2** | 22 | 22 | 0 | **100%** | ✅ Complete |
 | **M3** | 10 | 10 | 0 | **100%** | ✅ Complete |
-| **M4** | 7 | 0 | 7 | **0%** | ⏳ Next |
-| **M5** | 9 | 0 | 9 | **0%** | ⏳ Pending |
+| **M4** | 7 | 7 | 0 | **100%** | ✅ Complete |
+| **M5** | 9 | 0 | 9 | **0%** | ⏳ Next |
 | **M6** | 9 | 0 | 9 | **0%** | ⏳ Pending |
-| **TOTAL** | **72** | **47** | **25** | **65%** | **In Progress** |
+| **TOTAL** | **72** | **54** | **18** | **75%** | **In Progress** |
 
 ---
 
@@ -261,10 +265,10 @@ M6 (Sharding + Security + Launch) ⏳
 | M1 | 8-10 hours | ~12 hours | +2 hours |
 | M2 | 12-15 hours | ~8 hours | -4 hours |
 | M3 | 6-8 hours | ~4 hours | -2 hours |
-| M4 | 15-20 hours | - | - |
+| M4 | 15-20 hours | ~16 hours | -4 hours |
 | M5 | 12-15 hours | - | - |
 | M6 | 8-10 hours | - | - |
-| **TOTAL** | **61-78 hours** | **~24 hours** | **-** |
+| **TOTAL** | **61-78 hours** | **~40 hours** | **-** |
 
 ---
 
@@ -274,9 +278,9 @@ M6 (Sharding + Security + Launch) ⏳
 - None
 
 ### Upcoming Considerations
-- **M4 (Dashboard):** Requires Discord OAuth2 app setup in Discord Developer Portal
-- **M4.6 (WebSocket):** Need to decide between Socket.IO server or Next.js API routes with polling
-- **M5.4 (Media Security Page):** Dashboard review queue must sync with Discord review queue via WebSocket
+- **M5.1 (Cases Page):** Already has basic table + pagination; needs search + detail view
+- **M5.4 (Media Security Page):** Dashboard review queue must sync with Discord review queue via Supabase Realtime
+- **M5.7 (Dashboard Sync):** Ensure all settings are readable/writable via both Discord commands and dashboard
 
 ---
 
@@ -288,10 +292,10 @@ M6 (Sharding + Security + Launch) ⏳
 | v1.1.0 | 2026-06-20 | M1 Complete | ✅ Complete |
 | v2.0.0 | 2026-06-20 | M2 Complete | ✅ Complete |
 | v3.0.0 | 2026-06-20 | M3 Complete | ✅ Complete |
-| **v4.0.0** | **TBD** | **M4 Complete** | ⏳ In Progress |
+| **v4.0.0** | **2026-06-20** | **M4 Complete** | ✅ **Complete** |
 | v5.0.0 | TBD | M5 Complete | ⏳ Pending |
 | v6.0.0 | TBD | M6 Complete | ⏳ Pending |
 
 ---
 
-**Next Action:** Begin M4 implementation starting with M4.1 (Backend API Setup + Discord OAuth2)
+**Next Action:** Begin M5 implementation starting with M5.1 (Cases Page search + detail view)

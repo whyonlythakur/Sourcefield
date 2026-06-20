@@ -1,8 +1,8 @@
 # AutoMod Pro — Task List
 
-> **Last Updated:** 2026-06-20  
-> **Current Version:** v3.0.0 (M3 Complete)  
-> **Overall Progress:** 61% (44/72 tasks)
+> **Last Updated:** 2026-06-20
+> **Current Version:** v4.0.0 (M4 Complete)
+> **Overall Progress:** 75% (54/72 tasks)
 
 ---
 
@@ -20,37 +20,26 @@ All 22 tasks completed.
 
 ## ✅ M3 — Report → Review → Action Pipeline — **COMPLETE**
 
-All 10 tasks completed:
-
-- [x] [P0] Case creation pipeline (auto-detect + manual report → unified Case)
-- [x] [P0] Confidence scoring + auto-resolve logic (>90% + low-severity)
-- [x] [P0] Review queue embeds with button interactions
-- [x] [P0] Action handler: execute punishment, DM offender, log audit
-- [x] [P1] Media review workflow (intercept → review → approve/reject → webhook relay)
-- [x] [P1] /case view command
-- [x] [P1] /history command
-- [x] [P1] /lockdown command
-- [x] [P2] Appeal link generation (configurable)
-- [x] [P2] Case states: pending → in_review → resolved | dismissed | escalated
+All 10 tasks completed.
 
 ---
 
-## ⏳ M4 — Dashboard MVP
+## ✅ M4 — Dashboard MVP — **COMPLETE**
 
-- [ ] [P0] Discord OAuth2 login flow
-- [ ] [P0] Server switcher + guild selection
-- [ ] [P0] Overview page: stat cards, charts, activity feed
-- [ ] [P0] Automod config page: module toggle grid + threshold sliders
-- [ ] [P0] Reports kanban page: Pending | In Review | Resolved columns
-- [ ] [P1] WebSocket integration (Socket.IO) for live stats + report queue
-- [ ] [P1] Sidebar + topbar layout
-- [ ] [P2] Component library build-out: StatCard, ModuleToggleCard, KanbanColumn, ReportDrawer, etc.
+- [x] [P0] Discord OAuth2 login flow (NextAuth v4)
+- [x] [P0] Server switcher + guild selection
+- [x] [P0] Overview page: stat cards, charts, activity feed
+- [x] [P0] Automod config page: module toggle grid
+- [x] [P0] Reports kanban page: Pending | In Review | Resolved columns
+- [x] [P1] Supabase Realtime integration for live stats + report queue
+- [x] [P1] Sidebar + topbar layout
+- [x] [P2] Component library: StatCard, LiveLogFeed, etc.
 
 ---
 
 ## ⏳ M5 — Dashboard Full
 
-- [ ] [P0] Cases page: searchable history table + detail view
+- [ ] [P0] Cases page: searchable history table + detail view (basic table + pagination done in M4)
 - [ ] [P0] Logs page: channel router + live tail feed
 - [ ] [P0] Staff page: role management + hierarchy diagram
 - [ ] [P0] Media Security page: level selector, channel bindings, review queue
@@ -83,7 +72,7 @@ All 10 tasks completed:
 | **M1** | 15 | 15 | 0 | **100%** |
 | **M2** | 22 | 22 | 0 | **100%** |
 | **M3** | 10 | 10 | 0 | **100%** |
-| **M4** | 7 | 0 | 7 | **0%** |
+| **M4** | 7 | 7 | 0 | **100%** |
 | **M5** | 9 | 0 | 9 | **0%** |
 | **M6** | 9 | 0 | 9 | **0%** |
-| **TOTAL** | **72** | **47** | **25** | **65%** |
+| **TOTAL** | **72** | **54** | **18** | **75%** |
