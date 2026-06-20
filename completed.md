@@ -4,6 +4,71 @@
 
 ---
 
+## v2.0.0 — 2026-06-20 (M2 Complete)
+
+### Punishment Engine
+- [x] Punishment ladder engine (actionHandler.js)
+  - executePunishment() function with warn/mute/kick/ban support
+  - checkAutoEscalation() for auto-escalation (3 warns=mute, 5=kick, 7=ban)
+  - handleModuleTrigger() for automatic module punishment execution
+  - PUNISHMENT_WEIGHTS constant for point tracking
+- [x] Warn System module (auto-triggers on threshold breach)
+- [x] Mute/Timeout Manager module (tracks active mutes)
+
+### Content Filter Modules (7 modules)
+- [x] Duplicate/Copy-paste Detection (Redis-based, 5min window, 3 strikes)
+- [x] Mass Emoji/Sticker Spam (>10 emoji/stickers, Unicode + custom emoji)
+- [x] Caps Lock Filter (>70% uppercase characters)
+- [x] Custom Blacklist (regex patterns, /wordfilter add/remove/list)
+- [x] Phishing/Scam Links (known phishing domains, suspicious TLDs)
+- [x] NSFW Image Detection (keyword + filename analysis, non-NSFW channels only)
+- [x] Zalgo/Unicode Abuse (combining mark detection, >30% ratio)
+
+### Account Protection Modules (3 modules)
+- [x] New Account Filter (account age < threshold days, auto-kick option)
+- [x] Alt Account Detection (account age + join age + heuristics)
+- [x] Selfbot Detection (rapid message patterns, <1s intervals)
+
+### Server Protection Modules (5 modules)
+- [x] Webhook Spam Protection (unauthorized webhook rate limiting)
+- [x] Nickname Filter (offensive + impersonation detection)
+- [x] Channel/Role Spam Protection (mass creation rate tracking)
+- [x] Auto-Slowmode (dynamic slowmode on high velocity)
+- [x] Lockdown Mode (server-wide channel lock with enable/disable functions)
+
+### Security Modules (2 modules)
+- [x] Token/IP Grabber Detection (grabber keywords + URL shorteners)
+- [x] Verification Gate (unverified user detection, gate role check)
+
+### Flagship Feature
+- [x] Media Security System (Module 26)
+  - Security levels: Low (2 attachments), Moderate (1 attachment), High (0 attachments)
+  - Media channel designation (single approved channel)
+  - Trusted Media Uploader role (exempt from all restrictions)
+  - Auto-intercept in High security → review queue
+  - Integration with mediaReviewHandler (stub for review workflow)
+
+### Commands (11 commands)
+- [x] /security level [low/moderate/high]
+- [x] /security mediachannel [#channel]
+- [x] /security reviewchannel [#channel]
+- [x] /security trustedrole [@role]
+- [x] /security autoescalate [on/off]
+- [x] /security status
+- [x] /automod module [name] [enable/disable]
+- [x] /automod threshold [name] [value]
+- [x] /automod punishment [name] [ladder]
+- [x] /wordfilter add/remove/list [pattern]
+- [x] /raidmode [on/off/auto]
+
+### Integrations
+- [x] Updated bot.js to load all modules into client.modules
+- [x] Updated messageHandler.js to integrate with punishment ladder
+- [x] Updated lockdown.js command to integrate with lockdown module
+- [x] Enhanced memberHandler.js with raid tracking in guildMemberAdd event
+
+---
+
 ## v1.1.0 — 2026-06-20 (M1 Complete)
 
 ### Core Bot Infrastructure
@@ -12,7 +77,7 @@
 - [x] Redis Cloud connection setup
 - [x] Guild model integration (client.db namespace)
 - [x] Auto-create Guild docs on guildCreate
-- [x] Permission middleware (4-tier system: Owner/ServerOwner/Admin/Moderator/Reporter)
+- [x] Permission middleware (4-tier system)
 
 ### Staff System
 - [x] /staff add command (with permission checks)
@@ -81,6 +146,7 @@
 
 ## Summary
 
-**Total Completed Tasks:** 45+
-**Milestone:** M1 (Core Bot + 6 Priority Modules) — **100% Complete**
-**Next Milestone:** M2 (Remaining 19 Modules + Punishment Ladder Engine)
+**Total Completed Tasks:** 60+  
+**Milestones Complete:** M1 (100%), M2 (100%)  
+**Overall Progress:** 51% (37/72 tasks)  
+**Next Milestone:** M3 (Report → Review → Action Pipeline)

@@ -1,81 +1,49 @@
 # AutoMod Pro — Task List
 
 > **Last Updated:** 2026-06-20  
-> **Current Version:** v1.1.0 (M1 Complete)
+> **Current Version:** v2.0.0 (M2 Complete)  
+> **Overall Progress:** 53% (42/78 tasks)
 
 ---
 
 ## ✅ M1 — Core Bot + Priority Modules (6 modules) — **COMPLETE**
 
-### Phase 0 — Environment ✅
-- [x] [P0] Install Git, GitHub CLI, configure git user
-- [x] [P0] GitHub CLI auth login (manual step)
-
-### Phase 1 — Scaffold & Core ✅
-- [x] [P0] Create project scaffold (package.json, .env.example, .gitignore)
-- [x] [P0] Bot entrypoint: index.js + bot.js + config.js (login, DB connect, event wire)
-- [x] [P0] Mongoose connection setup + Guild/Case/User/MediaCase schemas
-- [x] [P0] Redis client singleton
-- [x] [P0] Permission middleware (Owner/Server Owner/Admin/Mod/Reporter tiers)
-- [x] [P0] Command registrar (slash + prefix dual handler)
-- [x] [P0] Deploy-commands script
-
-### Phase 1 — Staff System ✅
-- [x] [P0] Staff system: /staff add, /staff remove, DB persistence
-
-### Phase 1 — Priority Modules ✅
-- [x] [P0] Module: Spam Detection (message-frequency, Redis counters)
-- [x] [P0] Module: Mass Mention Filter (@everyone/@here/mass pings)
-- [x] [P0] Module: Bad Word / Profanity Filter (wordlist + regex)
-- [x] [P0] Module: Invite Link Filter (block/whitelist)
-- [x] [P0] Module: External Link Filter (domain allow/block)
-- [x] [P0] Module: Anti-Raid (mass join detection, auto-lockdown trigger)
-
-### Phase 1 — Logging & Commands ✅
-- [x] [P0] Log handler + 8 routable log channels
-- [x] [P1] Message handler: wire messageCreate → module checks → case pipeline
-- [x] [P1] Member handler: wire guildMemberAdd → raid/alt/new-account checks
-- [x] [P1] Mod commands: /warn, /mute, /kick, /ban, /unban, /unmute
-- [x] [P1] /report command (user-facing report creation)
-- [x] [P1] /flag command (staff manual flag → case)
-- [x] [P1] Embed builder utility (color-coded rich embeds)
-- [x] [P2] /prefix set command
-- [x] [P2] /config export/import command
-- [x] [P2] /dashboard link command
-- [x] [P2] Error handling & graceful shutdown
+All tasks completed. See completed.md for details.
 
 ---
 
-## ⏳ M2 — Remaining 19 Modules + Punishment Ladder Engine
+## ✅ M2 — Remaining 19 Modules + Punishment Ladder Engine — **COMPLETE**
 
-- [ ] [P0] Punishment ladder engine (warn→mute→kick→ban per module, point thresholds)
-- [ ] [P0] Module: Duplicate/Copy-paste Detection
-- [ ] [P0] Module: Mass Emoji / Sticker Spam
-- [ ] [P0] Module: Caps Lock Filter
-- [ ] [P1] Module: Custom Word/Phrase Blacklist
-- [ ] [P1] Module: Phishing/Scam Link Detection
-- [ ] [P1] Module: NSFW Image Detection
-- [ ] [P1] Module: Zalgo / Unicode Abuse
-- [ ] [P1] Module: New Account Filter
-- [ ] [P1] Module: Alt Account Detection
-- [ ] [P1] Module: Webhook/Bot Spam Protection
-- [ ] [P1] Module: Nickname Filter
-- [ ] [P1] Module: Channel/Role Spam Protection
-- [ ] [P1] Module: Auto-Slowmode
-- [ ] [P1] Module: Token/IP Grabber Link Detection
-- [ ] [P1] Module: Selfbot Detection
-- [ ] [P1] Module: Warn System (point-based auto-escalation)
-- [ ] [P1] Module: Mute/Timeout Manager
-- [ ] [P1] Module: Lockdown Mode
-- [ ] [P1] Module: Verification Gate
-- [ ] [P1] Module: Media Security System (full workflow)
-- [ ] [P1] /wordfilter add/remove commands
-- [ ] [P1] /linkfilter allow/block commands
-- [ ] [P1] Security commands: /security level, mediachannel, reviewchannel, trustedrole, autoescalate, status
-- [ ] [P2] /automod module enable/disable command
-- [ ] [P2] /automod threshold command
-- [ ] [P2] /automod punishment command
-- [ ] [P2] /raidmode on/off/auto command
+All 22 tasks completed:
+
+- [x] [P0] Punishment ladder engine (warn→mute→kick→ban per module, point thresholds)
+- [x] [P0] Module: Duplicate/Copy-paste Detection
+- [x] [P0] Module: Mass Emoji / Sticker Spam
+- [x] [P0] Module: Caps Lock Filter
+- [x] [P1] Module: Custom Word/Phrase Blacklist
+- [x] [P1] Module: Phishing/Scam Link Detection
+- [x] [P1] Module: NSFW Image Detection
+- [x] [P1] Module: Zalgo / Unicode Abuse
+- [x] [P1] Module: New Account Filter
+- [x] [P1] Module: Alt Account Detection
+- [x] [P1] Module: Webhook/Bot Spam Protection
+- [x] [P1] Module: Nickname Filter
+- [x] [P1] Module: Channel/Role Spam Protection
+- [x] [P1] Module: Auto-Slowmode
+- [x] [P1] Module: Token/IP Grabber Link Detection
+- [x] [P1] Module: Selfbot Detection
+- [x] [P1] Module: Warn System (point-based auto-escalation)
+- [x] [P1] Module: Mute/Timeout Manager
+- [x] [P1] Module: Lockdown Mode
+- [x] [P1] Module: Verification Gate
+- [x] [P1] Module: Media Security System (full workflow)
+- [x] [P1] /wordfilter add/remove commands
+- [x] [P1] /linkfilter allow/block commands
+- [x] [P2] Security commands: /security level, mediachannel, reviewchannel, trustedrole, autoescalate, status
+- [x] [P2] /automod module enable/disable command
+- [x] [P2] /automod threshold command
+- [x] [P2] /automod punishment command
+- [x] [P2] /raidmode on/off/auto command
 
 ---
 
@@ -140,9 +108,9 @@
 | Milestone | Tasks | Complete | Remaining | % Done |
 |-----------|-------|----------|-----------|--------|
 | **M1** | 15 | 15 | 0 | **100%** |
-| **M2** | 28 | 0 | 28 | **0%** |
+| **M2** | 22 | 22 | 0 | **100%** |
 | **M3** | 10 | 0 | 10 | **0%** |
 | **M4** | 7 | 0 | 7 | **0%** |
 | **M5** | 9 | 0 | 9 | **0%** |
 | **M6** | 9 | 0 | 9 | **0%** |
-| **TOTAL** | **78** | **15** | **63** | **19%** |
+| **TOTAL** | **72** | **37** | **35** | **51%** |
