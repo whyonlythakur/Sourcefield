@@ -1,64 +1,37 @@
 # AutoMod Pro — Task List
 
 > **Last Updated:** 2026-06-20  
-> **Current Version:** v2.0.0 (M2 Complete)  
-> **Overall Progress:** 53% (42/78 tasks)
+> **Current Version:** v3.0.0 (M3 Complete)  
+> **Overall Progress:** 61% (44/72 tasks)
 
 ---
 
 ## ✅ M1 — Core Bot + Priority Modules (6 modules) — **COMPLETE**
 
-All tasks completed. See completed.md for details.
+All 15 tasks completed.
 
 ---
 
 ## ✅ M2 — Remaining 19 Modules + Punishment Ladder Engine — **COMPLETE**
 
-All 22 tasks completed:
-
-- [x] [P0] Punishment ladder engine (warn→mute→kick→ban per module, point thresholds)
-- [x] [P0] Module: Duplicate/Copy-paste Detection
-- [x] [P0] Module: Mass Emoji / Sticker Spam
-- [x] [P0] Module: Caps Lock Filter
-- [x] [P1] Module: Custom Word/Phrase Blacklist
-- [x] [P1] Module: Phishing/Scam Link Detection
-- [x] [P1] Module: NSFW Image Detection
-- [x] [P1] Module: Zalgo / Unicode Abuse
-- [x] [P1] Module: New Account Filter
-- [x] [P1] Module: Alt Account Detection
-- [x] [P1] Module: Webhook/Bot Spam Protection
-- [x] [P1] Module: Nickname Filter
-- [x] [P1] Module: Channel/Role Spam Protection
-- [x] [P1] Module: Auto-Slowmode
-- [x] [P1] Module: Token/IP Grabber Link Detection
-- [x] [P1] Module: Selfbot Detection
-- [x] [P1] Module: Warn System (point-based auto-escalation)
-- [x] [P1] Module: Mute/Timeout Manager
-- [x] [P1] Module: Lockdown Mode
-- [x] [P1] Module: Verification Gate
-- [x] [P1] Module: Media Security System (full workflow)
-- [x] [P1] /wordfilter add/remove commands
-- [x] [P1] /linkfilter allow/block commands
-- [x] [P2] Security commands: /security level, mediachannel, reviewchannel, trustedrole, autoescalate, status
-- [x] [P2] /automod module enable/disable command
-- [x] [P2] /automod threshold command
-- [x] [P2] /automod punishment command
-- [x] [P2] /raidmode on/off/auto command
+All 22 tasks completed.
 
 ---
 
-## ⏳ M3 — Report → Review → Action Pipeline (Discord-side)
+## ✅ M3 — Report → Review → Action Pipeline — **COMPLETE**
 
-- [ ] [P0] Case creation pipeline (auto-detect + manual report → unified Case)
-- [ ] [P0] Confidence scoring + auto-resolve logic (>90% + low-severity)
-- [ ] [P0] Review queue embeds with button interactions
-- [ ] [P0] Action handler: execute punishment, DM offender, log audit
-- [ ] [P1] Media review workflow (intercept → review → approve/reject → webhook relay)
-- [ ] [P1] /case view command
-- [ ] [P1] /history command
-- [ ] [P1] /lockdown command
-- [ ] [P2] Appeal link generation (configurable)
-- [ ] [P2] Case states: pending → in_review → resolved | dismissed | escalated
+All 10 tasks completed:
+
+- [x] [P0] Case creation pipeline (auto-detect + manual report → unified Case)
+- [x] [P0] Confidence scoring + auto-resolve logic (>90% + low-severity)
+- [x] [P0] Review queue embeds with button interactions
+- [x] [P0] Action handler: execute punishment, DM offender, log audit
+- [x] [P1] Media review workflow (intercept → review → approve/reject → webhook relay)
+- [x] [P1] /case view command
+- [x] [P1] /history command
+- [x] [P1] /lockdown command
+- [x] [P2] Appeal link generation (configurable)
+- [x] [P2] Case states: pending → in_review → resolved | dismissed | escalated
 
 ---
 
@@ -109,8 +82,8 @@ All 22 tasks completed:
 |-----------|-------|----------|-----------|--------|
 | **M1** | 15 | 15 | 0 | **100%** |
 | **M2** | 22 | 22 | 0 | **100%** |
-| **M3** | 10 | 0 | 10 | **0%** |
+| **M3** | 10 | 10 | 0 | **100%** |
 | **M4** | 7 | 0 | 7 | **0%** |
 | **M5** | 9 | 0 | 9 | **0%** |
 | **M6** | 9 | 0 | 9 | **0%** |
-| **TOTAL** | **72** | **37** | **35** | **51%** |
+| **TOTAL** | **72** | **47** | **25** | **65%** |
