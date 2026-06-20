@@ -1,8 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const Guild = require('../../models/Guild');
-const Case = require('../../models/Case');
-const { generateCaseId } = require('../../utils/caseId');
-const { sendLog } = require('../../handlers/logHandler');
+const { createManualReport } = require('../../handlers/reportHandler');
+const { TIERS, getTier } = require('../../middleware/permissions');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -22,36 +21,15 @@ module.exports = {
       return interaction.reply({ content: '❌ You cannot report the bot.', ephemeral: true });
     }
 
-    const caseDoc = await Case.create({
-      caseId: generateCaseId(),
-      guildId: interaction.guildId,
-      type: 'manual',
-      module: 'report',
-      severity: 'medium',
-      targetUserId: user.id,
-      reporterId: interaction.user.id,
-      evidence: { content: reason, confidenceScore: 0 },
-      status: 'pending',
-      punishment: 'none',
-    });
+    const caseDoc = await createManualReport(
+      interaction.client,
+      interaction.guildId,
+      user.id,
+      interaction.user.id,
+      reason
+    );
 
     const guildDoc = await Guild.findOne({ guildId: interaction.guildId });
-    const caseLogsChannel = guildDoc?.logChannels?.caseLogs
-      ? interaction.guild.channels.cache.get(guildDoc.logChannels.caseLogs)
-      : null;
-
-    if (caseLogsChannel) {
-      await sendLog(interaction.client, interaction.guildId, 'caseLogs', {
-        title: 'New Report Created',
-        description: `Case ${caseDoc.caseId}`,
-        fields: [
-          { name: 'Reporter', value: `<@${interaction.user.id}>`, inline: true },
-          { name: 'Reported', value: `<@${user.id}>`, inline: true },
-          { name: 'Reason', value: reason.substring(0, 1024), inline: false },
-        ],
-      });
-    }
-
     const staffPing = guildDoc?.staff?.length > 0
       ? guildDoc.staff.filter(s => ['admin', 'moderator'].includes(s.role)).map(s => `<@${s.userId}>`).join(' ')
       : '@here';
