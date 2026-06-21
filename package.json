@@ -1,12 +1,14 @@
 ﻿{
     "scripts":  {
                     "dev":  "node --watch src/index.js",
+                    "start":  "node src/index.js",
+                    "shard":  "node src/shard.js",
                     "register":  "node scripts/deploy-commands.js",
-                    "start":  "node src/index.js"
+                    "test:load":  "node scripts/load-test.js"
                 },
     "description":  "AutoMod Pro - Fully-automatic Discord moderation bot with 26 modules, report pipeline, and web dashboard",
     "license":  "MIT",
-    "version":  "1.0.0",
+    "version":  "5.0.0",
     "engines":  {
                     "node":  "\\u003e=20.0.0"
                 },
@@ -14,8 +16,10 @@
     "main":  "src/index.js",
     "dependencies":  {
                          "@supabase/supabase-js":  "^2.39.0",
+                         "bullmq":  "^5.1.0",
                          "discord.js":  "^14.18.0",
-                         "dotenv":  "^16.5.0"
+                         "dotenv":  "^16.5.0",
+                         "ioredis":  "^5.3.0"
                      },
     "keywords":  [
                      "discord",

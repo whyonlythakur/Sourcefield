@@ -27,4 +27,7 @@ async function main() {
   }
 }
 
-main();
+// Only run if this file is executed directly (not imported by shard manager)
+if (require.main === module) {
+  main();
+}
