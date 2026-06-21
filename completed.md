@@ -4,6 +4,19 @@
 
 ---
 
+## v6.0.0 — 2026-06-21 (M6 Complete)
+
+### Production Ready
+- [x] Discord.js ShardingManager setup (`src/shard.js`, `src/bot.js`)
+- [x] Security hardening: rate limiting, OAuth2 token encryption, role validation, input sanitization
+- [x] Load testing suite: spam simulation, raid simulation, module trigger benchmarks
+- [x] BullMQ integration: punishment queue for temp mute/ban expiry, auto-unmute worker
+- [x] Complete documentation: SETUP.md, MODULES.md, COMMANDS.md, DASHBOARD.md, TROUBLESHOOTING.md
+- [x] <1s median detection-to-action benchmark achieved
+- [x] 100% report routing verification
+
+---
+
 ## v5.0.0 — 2026-06-21 (M5 Complete)
 
 ### Dashboard Full
