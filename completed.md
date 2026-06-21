@@ -4,6 +4,29 @@
 
 ---
 
+## v5.0.0 — 2026-06-21 (M5 Complete)
+
+### Dashboard Full
+- [x] Cases page with search, filters (type, status), and detail view modal
+- [x] Logs page with 8 log categories, color coding, and live feed
+- [x] Staff page with role-based grouping (owner/admin/mod/reporter) and hierarchy diagram
+- [x] Media Security page with security level selector, channel bindings, and review queue
+- [x] User Profile page with warn gauge (0-10 points), case history timeline, and action panel
+- [x] Settings page with general config (prefix, language, verification), log channels, and danger zone
+- [x] Audit Trail page with paginated table of all mod actions
+- [x] Dashboard ↔ Command sync: all settings readable/writable via both surfaces
+
+### API Routes
+- [x] `GET /api/guilds/[guildId]/logs` — Log entries with category filtering
+- [x] `GET /api/guilds/[guildId]/staff` — Staff members by role
+- [x] `GET/PATCH /api/guilds/[guildId]/settings` — Guild settings CRUD
+- [x] `GET/PATCH /api/guilds/[guildId]/media-security` — Media security config + pending reviews
+- [x] `POST /api/guilds/[guildId]/media-security/review` — Approve/reject media
+- [x] `GET /api/guilds/[guildId]/audit` — Audit trail with pagination
+- [x] `GET /api/users/[userId]` — User profile + case history
+
+---
+
 ## v4.0.0 — 2026-06-20 (M4 Complete)
 
 ### Dashboard MVP
