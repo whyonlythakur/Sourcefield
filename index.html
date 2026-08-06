@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sourcefield · Generative Poster Maker</title>
+<meta name="description" content="Procedurally generated posters, fully controllable, right in your browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<header>
+  <div class="logo">WhyOnly<span>Thakur</span></div>
+  <a class="repo-link" href="https://github.com/whyonlythakur/Sourcefield" target="_blank" rel="noopener">View Source →</a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">VISUAL LAB</div>
+    <h1>Sourcefield<span>.</span></h1>
+    <p class="dek">
+      A poster generator with full manual control.<br>
+      Every color, blur, density, and size is yours to set, generation just gives you a starting point.
+    </p>
+  </section>
+
+  <section class="workspace">
+
+    <div class="panel glass controls-panel">
+
+      <div class="panel-section">
+        <div class="panel-title">Text</div>
+        <div class="control-group">
+          <label class="control-label">Title</label>
+          <input type="text" id="ctrl-title" class="text-control" value="SOURCEFIELD" maxlength="24">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Subtitle</label>
+          <input type="text" id="ctrl-subtitle" class="text-control" value="Generated Composition No. 01" maxlength="48">
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Composition</div>
+        <div class="control-group">
+          <label class="control-label">Style</label>
+          <select id="ctrl-style" class="select-control">
+            <option value="flowfield">Flow Field</option>
+            <option value="fractal">Fractal Circles</option>
+            <option value="blobs">Blobs</option>
+            <option value="grid">Grid Dots</option>
+            <option value="stripes">Stripes</option>
+            <option value="rings">Rings</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Density <span id="val-density">50</span></label>
+          <input type="range" id="ctrl-density" min="1" max="100" value="50">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Element Size <span id="val-scale">100%</span></label>
+          <input type="range" id="ctrl-scale" min="30" max="220" value="100">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Line Width <span id="val-linewidth">100%</span></label>
+          <input type="range" id="ctrl-linewidth" min="20" max="300" value="100">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Rotation <span id="val-rotation">0°</span></label>
+          <input type="range" id="ctrl-rotation" min="0" max="360" value="0">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Element Opacity <span id="val-opacity">100%</span></label>
+          <input type="range" id="ctrl-opacity" min="10" max="100" value="100">
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Color</div>
+        <div class="control-group">
+          <label class="control-label">Palette Mode</label>
+          <select id="ctrl-palette" class="select-control">
+            <option value="procedural">Procedural (random harmony)</option>
+            <option value="neon">Neon Noir</option>
+            <option value="sunset">Sunset Drift</option>
+            <option value="mono">Mono Ice</option>
+            <option value="acid">Acid Garden</option>
+            <option value="ember">Ember</option>
+            <option value="custom">Custom (pick your own)</option>
+          </select>
+        </div>
+
+        <div id="custom-color-block" class="custom-color-block" style="display:none;">
+          <div class="color-row">
+            <label>Background</label>
+            <input type="color" id="ctrl-color-bg" value="#0b0014">
+          </div>
+          <div class="color-row">
+            <label>Accent 1</label>
+            <input type="color" id="ctrl-color-1" value="#ff2ec4">
+          </div>
+          <div class="color-row">
+            <label>Accent 2</label>
+            <input type="color" id="ctrl-color-2" value="#22d3ee">
+          </div>
+          <div class="color-row">
+            <label>Accent 3</label>
+            <input type="color" id="ctrl-color-3" value="#a78bfa">
+          </div>
+          <div class="color-row">
+            <label>Accent 4</label>
+            <input type="color" id="ctrl-color-4" value="#ffffff">
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Effects</div>
+        <div class="control-group">
+          <label class="control-label">Background Blur <span id="val-bgblur">0px</span></label>
+          <input type="range" id="ctrl-bgblur" min="0" max="40" value="0">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Foreground Blur <span id="val-fgblur">0px</span></label>
+          <input type="range" id="ctrl-fgblur" min="0" max="20" value="0">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Grain <span id="val-grain">14%</span></label>
+          <input type="range" id="ctrl-grain" min="0" max="60" value="14">
+        </div>
+        <div class="control-group">
+          <label class="control-label">Vignette <span id="val-vignette">45%</span></label>
+          <input type="range" id="ctrl-vignette" min="0" max="100" value="45">
+        </div>
+      </div>
+
+      <div class="seed-row">
+        <span class="control-label">Seed</span>
+        <div class="seed-value" id="seed-display">no seed yet</div>
+      </div>
+
+      <div class="export-row">
+        <button class="btn-primary" id="generate-btn">Randomize</button>
+        <button class="btn-ghost" id="download-btn">Download PNG</button>
+      </div>
+    </div>
+
+    <div class="panel glass canvas-panel">
+      <div class="panel-title">Output</div>
+      <div class="canvas-frame">
+        <canvas id="poster-canvas" width="900" height="1125"></canvas>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <div>Built by Arpit Singh · <a href="https://thakur.snapz.dev" target="_blank" rel="noopener">WhyOnlyThakur</a></div>
+  <div>100% client-side. Every poster is generated on your device.</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
